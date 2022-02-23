@@ -6,7 +6,9 @@ pipeline{
     stages{
         stage('Pull Source Code from GitHub') {
             steps {
-                git branch: ‘main’, credentialsId: ‘Git’, url: ‘https://github.com/CloudHight/Pet-Adoption-End-To-End-Project-Application-Team_US.git’
+                git branch: 'main',
+                credentialsId: '629a664c-7f17-4e0e-8b6a-b24f9a12b5cf', 
+                url: 'https://github.com/CloudHight/Pet-Adoption-Containerisation-Project-Application-Team_1.git'
             }
         }
 
@@ -17,8 +19,8 @@ pipeline{
         }
            stage('Send Artifacts') {
                 steps {
-                    sshagent(['docker_host']) {
-                        sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/test/target/spring-petclinic-2.4.2.war  ec2-user@54.161.12.171:/opt/docker'
+                    sshagent(['jenkinskey']) {
+                        sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/petadoption/target/spring-petclinic-2.4.2.war  ansible_admin@13.40.67.151:/opt/docker'
                     }
                 }
 
