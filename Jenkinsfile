@@ -19,7 +19,7 @@ pipeline{
         }
            stage('Send Artifacts') {
                 steps {
-                    sshagent(['jenkinskey']) {
+                    sshagent(['Jenkinskey']) {
                         sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/petadoption/target/spring-petclinic-2.4.2.war  ec2-user@18.133.229.214:/opt/docker'
                     }
                 }
