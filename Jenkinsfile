@@ -7,7 +7,7 @@ pipeline{
         stage('Pull Source Code from GitHub') {
             steps {
                 git branch: 'main',
-                credentialsId: '644e73db-f5bc-4750-8066-ca16aa3fee28', 
+                credentialsId: 'ee5ca289-f23c-4dce-bdb4-95ec21e826e2', 
                 url: 'https://github.com/CloudHight/Pet-Adoption-Containerisation-Project-Application-Team_1.git'
             }
         }
@@ -20,7 +20,7 @@ pipeline{
            stage('Send Artifacts') {
                 steps {
                     sshagent(['jenkinskey']) {
-                        sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/petadoption/target/spring-petclinic-2.4.2.war  ec2-user@3.8.117.55:/opt/docker'
+                        sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/petadoption/target/spring-petclinic-2.4.2.war  ec2-user@18.133.224.2/opt/docker'
                     }
                 }
 
