@@ -13,7 +13,7 @@ pipeline{
         }
         stage('DockerBuild'){
             steps{
-                sh 'bash && docker build -t cloudhight/pipeline:1.0.3 .'
+                sh 'bash && docker build -t cloudhight/pipeline:1.0.0 .'
             }
         }
         stage('DockerLogin') {
@@ -23,13 +23,13 @@ pipeline{
         }
         stage('DockerPush') {
             steps{
-                sh 'docker push cloudhight/pipeline:1.0.3'
+                sh 'docker push cloudhight/pipeline:1.0.0'
             }
         }
         stage('Deploy') {
              steps {
                sshagent (['ansible_creds']) {
-                   sh 'ssh -t -t ec2-user@10.0.2.152 -o strictHostKeyChecking=no "cd /etc/ansible && ansible-playbook MyPlaybook.yaml"'
+                   sh 'ssh -t -t ec2-user@10.0.2.108 -o strictHostKeyChecking=no "cd /etc/ansible && ansible-playbook MyPlaybook.yaml"'
                 }
             }
         }
