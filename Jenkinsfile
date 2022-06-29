@@ -29,7 +29,7 @@ pipeline{
         stage('Deploy') {
              steps {
                sshagent (['ansible_creds']) {
-                   sh 'ssh -t -t ec2-user@10.0.2.27 -o strictHostKeyChecking=no "cd /etc/ansible && ansible-playbook MyPlaybook.yaml"'
+                   sh 'ssh -t -t ec2-user@10.0.2.6 -o strictHostKeyChecking=no "cd /etc/ansible && ansible-playbook MyPlaybook.yaml"'
                 }
             }
         }
