@@ -7,7 +7,7 @@ RUN apt update -y && apt install curl -y
 RUN curl -O https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip && \
     apt-get install unzip -y  && \
     unzip newrelic-java.zip -d  /usr/local/tomcat/webapps
-ENV JAVA_OPTS="$JAVA_OPTS -javaagent:app/newrelic.jar"
+ENV JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/local/tomcat/webapps/newrelic/newrelic.jar"
 RUN mkdir -p /usr/local/tomcat/webapps/newrelic
 ADD ./newrelic/newrelic.jar /usr/local/tomcat/webapps/newrelic/newrelic.jar
 ENV JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/local/tomcat/webapps/newrelic/newrelic.jar"
