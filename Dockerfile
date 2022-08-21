@@ -9,9 +9,9 @@ RUN curl -O https://download.newrelic.com/newrelic/java-agent/newrelic-agent/cur
     unzip newrelic-java.zip -d  /usr/local/tomcat/webapps
 ENV JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/local/tomcat/webapps/newrelic/newrelic.jar"
 RUN mkdir -p /usr/local/tomcat/webapps/newrelic
-ADD ./newrelic/newrelic.jar /usr/local/tomcat/webapps/newrelic/newrelic.jar
+ADD ./webapps/newrelic/newrelic.jar /usr/local/tomcat/webapps/newrelic/newrelic.jar
 ENV JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/local/tomcat/webapps/newrelic/newrelic.jar"
-ADD ./newrelic/newrelic.yml /usr/local/tomcat/webapps/newrelic/newrelic.yml
+ADD ./webapps/newrelic/newrelic.yml /usr/local/tomcat/webapps/newrelic/newrelic.yml
 ENV NEW_RELIC_APP_NAME="Pet-adoption"
 ENV NEW_RELIC_LICENCE_KEY="eu01xx4fc443b5ef136bb617380505f93e08NRAL"
 RUN mkdir -p /usr/local/tomcat/webapps/newrelic/logs
