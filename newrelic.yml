@@ -29,7 +29,7 @@ common: &default_settings
   # app_name: My Application;My Application 2
   # This setting is required. Up to 3 different application names can be specified.
   # The first application name must be unique.
-  app_name: PCDEUteam2
+  app_name: pet-adoption
 
   # To enable high security, set this property to true. When in high
   # security mode, the agent will use SSL and obfuscated SQL. Additionally,
@@ -329,15 +329,15 @@ common: &default_settings
 
 development:
   <<: *default_settings
-  app_name: PCDEUteam2 (Development)
+  app_name: pet-adoption (Development)
 
 test:
   <<: *default_settings
-  app_name: PCDEUteam2 (Test)
+  app_name: pet-adoption (Test)
 
 production:
   <<: *default_settings
 
 staging:
   <<: *default_settings
-  app_name: PCDEUteam2 (Staging)
+  app_name: pet-adoption (Staging)
