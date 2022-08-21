@@ -1,5 +1,5 @@
 FROM openjdk
-FROM ec2-user 
+FROM ubuntu 
 FROM tomcat
 COPY **/*.war /usr/local/tomcat/webapps
 WORKDIR  /usr/local/tomcat/webapps
