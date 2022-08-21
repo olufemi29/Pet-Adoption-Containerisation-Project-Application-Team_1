@@ -11,7 +11,7 @@ ENV JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/local/tomcat/webapps/newrelic.jar"
 ENV NEW_RELIC_APP_NAME="Pet-adoption"
 ENV NEW_RELIC_LICENCE_KEY="eu01xx4fc443b5ef136bb617380505f93e08NRAL"
 RUN mkdir -p /usr/local/tomcat/webapps/newrelic/logs
-RUN sudo groupadd tomcat && sudo useradd -s /bin/nologin -g tomcat -d /usr/local/tomcat/webapps/newrelic/logs tomcat
+RUN groupadd tomcat && useradd -s /bin/nologin -g tomcat -d /usr/local/tomcat/webapps/newrelic/logs tomcat
 RUN chown -R tomcat:tomcat /usr/local/tomcat/webapps/newrelic/logs
 ENV NEW_RELIC_LOG_FILE_NAME=STDOUT
 ENTRYPOINT ["java", "-javaagent:/usr/local/tomcat/webapps/newrelic.jar", "-jar", "spring-petclinic-2.4.2.war", "--server.port=8085"]
