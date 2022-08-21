@@ -8,7 +8,6 @@ RUN curl -O https://download.newrelic.com/newrelic/java-agent/newrelic-agent/cur
     apt-get install unzip -y  && \
     unzip newrelic-java.zip -d  /usr/local/tomcat/webapps
 RUN mkdir -p /usr/local/tomcat/newrelic
-ADD ./newrelic/newrelic.jar /usr/local/tomcat/newrelic/newrelic.jar
 ENV JAVA_OPTS="$JAVA_OPTS -javaagent:/usr/local/tomcat/newrelic/newrelic.jar"
 ADD ./newrelic/newrelic.yml /usr/local/tomcat/newrelic/newrelic.yml
 ENV NEW_RELIC_APP_NAME="Pet-adoption"
