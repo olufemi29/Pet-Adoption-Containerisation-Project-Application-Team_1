@@ -3,9 +3,9 @@ FROM ubuntu
 FROM tomcat
 COPY **/*.war /usr/local/tomcat/webapps
 WORKDIR  /usr/local/tomcat/webapps
-RUN yum update -y && yum install curl -y
+RUN apt update -y && apt install curl -y
 RUN curl -O https://download.newrelic.com/newrelic/java-agent/newrelic-agent/current/newrelic-java.zip && \
-    yum install unzip -y  && \
+    apt-get install unzip -y  && \
     unzip newrelic-java.zip -d  /usr/local/tomcat/webapps
 RUN mkdir -p /usr/local/tomcat/newrelic
 ADD ./newrelic/newrelic.jar /usr/local/tomcat/newrelic/newrelic.jar
