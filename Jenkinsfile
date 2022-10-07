@@ -7,7 +7,7 @@ pipeline{
         stage('Pull Source Code from GitHub') {
             steps {
                 git branch: 'main',
-                credentialsId: '2277488b-620a-4941-97a6-38178c57f9ea', 
+                credentialsId: '24f83b09-33a5-461c-81f7-9da352848d95', 
                 url: 'https://github.com/CloudHight/Pet-Adoption-Containerisation-Project-Application-Team_1.git'
             }
         }
@@ -26,14 +26,14 @@ pipeline{
            stage('Send Artifacts') {
                 steps {
                     sshagent(['jenkinskey']) {
-                        sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/petadoption/target/spring-petclinic-2.4.2.war  ec2-user@13.40.164.130:/opt/docker'
+                        sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/petadoption/target/spring-petclinic-2.4.2.war  ec2-user@3.145.111.202:/opt/docker'
                     }
                 }
            }
             stage('Deploy Application') {
                 steps {
                     sshagent(['jenkinskey']) {
-                        sh 'ssh -o strictHostKeyChecking=no ec2-user@13.40.164.130 "cd /opt/docker && ansible-playbook docker-image.yml && ansible-playbook docker-container.yml && ansible-playbook newrelic.yml"'
+                        sh 'ssh -o strictHostKeyChecking=no ec2-user@3.145.111.202 "cd /opt/docker && ansible-playbook docker-image.yml && ansible-playbook docker-container.yml && ansible-playbook newrelic.yml"'
                     }
                 }
             }
