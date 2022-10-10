@@ -30,12 +30,6 @@ pipeline{
                     }
                 }
            }
-            stage('Deploy Application') {
-                steps {
-                    sshagent(['jenkinskey']) {
-                        sh 'ssh -o strictHostKeyChecking=no ec2-user@13.40.101.227 "cd /opt/docker && ansible-playbook docker-image.yml && ansible-playbook docker-container.yml && ansible-playbook newrelic.yml"'
-                    }
-                }
-            }
+            
         }
 }
